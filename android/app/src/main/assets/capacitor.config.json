@@ -1,0 +1,6 @@
+{
+	"appId": "io.testowe",
+	"appName": "Testowa Ionica",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
