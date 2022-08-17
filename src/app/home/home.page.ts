@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import {environment} from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +7,10 @@ import {environment} from '../../environments/environment';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  newItem = "";
-  items: Array<string> = [];
-  apiUrl = environment.apiUrl;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  onAdd(): void {
-    this.items.push(this.newItem);
-    this.newItem = "";
+  onNav(page: string): void {
+    this.router.navigate([ page ]);
   }
 }

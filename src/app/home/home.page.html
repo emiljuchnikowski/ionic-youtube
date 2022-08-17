@@ -7,32 +7,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-list>
-      <ion-item>
-        Adres API: <strong> {{ apiUrl }}</strong>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
+  <ion-list>
+    <ion-item (click)="onNav('info')">
+      Informacje
+    </ion-item>
+    <ion-item (click)="onNav('form')">
       Formularz
-    </ion-card-header>
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Wartość</ion-label>
-        <ion-input [(ngModel)]="newItem"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-button expand="block" (click)="onAdd()">Dodaj</ion-button>
-  </ion-card>
-
-  <ion-card>
-    <ion-list>
-      <ion-item *ngFor="let item of items">
-        {{ item }}
-      </ion-item>
-    </ion-list>
-  </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
