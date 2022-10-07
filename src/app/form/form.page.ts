@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import { StorageService } from '../services';
+
+const ITEMS_KEY = "ITEMS";
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.page.html',
@@ -10,14 +15,19 @@ export class FormPage implements OnInit {
   newItem = "";
   items: Array<string> = [];
 
-  constructor() {}
+  constructor(private service: StorageService) {}
 
-  onAdd(): void {
+  async onAdd(): Promise<void> {
     this.items.push(this.newItem);
     this.newItem = "";
+
+    await this.service.set(ITEMS_KEY, this.items);
   }
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
+    const itemsDb = await this.service.get<string[]>(ITEMS_KEY);
+
+    if (!!itemsDb) this.items = itemsDb;
   }
 
 }
